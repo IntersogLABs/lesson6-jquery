@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<style>
+	.canvas{
+		width: 800px;
+		height: 400px;
+		background-color: #e0e0e0;
+	}
+	.point{
+		position: relative;
+		top: 200px;
+		width: 10px;
+		height: 10px;
+		border-radius: 100%;
+		background-color: black;
+	}
+</style>
+<script type="text/javascript" src="jquery-2.1.4.js"></script>
+<script type="text/javascript" src="app.js"></script>
+<body>
+<div class="canvas">
+	<div class="point">
+	</div>
+</div>
+<button class="start">Start</button>
+<button class="stop">Stop</button>
+<form action="">
+	<div><span>Duration: </span><input type="number" value="3" class="duration"/></div>
+	<div><span>HalfPeriods: </span><input type="number" value="7"class="halfPeriods"/></div>
+	<div><span>Amplitude: </span><input type="number" value="100" class="amplitude"/></div>
+</form>
+</body>
+</html>
