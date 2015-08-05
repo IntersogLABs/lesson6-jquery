@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<style>
+	.rateBar{
+		position: absolute;
+		top: 100px;
+		left: 200px;
+		height: 20px;
+		width: 500px;
+		background-color: #810cff;
+		border-color: #3F51B5;
+		border: solid 2px;
+		border-color: #3F51B5;
+		border-radius: 45%;
+		overflow: hidden;
+
+	}
+	.rateProgress{
+		background-color: white;
+		position: relative;
+		width: 0;
+		height: inherit;
+		float: right;
+
+	}
+	#cliker{
+		height: 100px;
+		width: 100px;
+	}
+	#progressBar{
+		position: absolute;
+		height: inherit;
+		width: inherit;
+	}
+	.score-bloc{
+		margin-top: 30px;
+	}
+</style>
+<script type="text/javascript" src="jquery-2.1.4.js"></script>
+<script type="text/javascript" src="app.js"></script>
+<body>
+<div class="rateBar">
+
+	<img id="progressBar" src="prog1.png">
+	<div class="rateProgress"></div>
+
+</div>
+<button id="cliker">Click me!</button>
+<div class="score-bloc">
+	<span>Score: <span id = 'scoreValue'></span></span>
+</div>
+</div>
+</body>
+</html>
