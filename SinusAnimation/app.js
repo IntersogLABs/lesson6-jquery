@@ -30,19 +30,19 @@ function startAnimation(){
     var $point = $('.point');
     var width = $point.parent().width();
     $point.periodicAnimation({
-            zeroValue: {
-                left: 0,
-                top: 200
-            },
-            duration: duration,
-            halfPeriods: halfPeriods,
-            x: 'left',
-            xEnd: width,
-            y: 'top',
-            yAmplitude: amplitude,
-            periodicFunc: Math.sin,
-            infinite: true
-        });
+        zeroValue: {
+            left: 0,
+            top: 200
+        },
+        duration: duration,
+        halfPeriods: halfPeriods,
+        x: 'left',
+        xEnd: width,
+        y: 'top',
+        yAmplitude: amplitude,
+        periodicFunc: Math.sin,
+        infinite: true
+    });
 }
 
 
