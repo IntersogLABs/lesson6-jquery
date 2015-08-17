@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+        <script src="js/jquery-2.1.4.js">
+        </script>
+	<script>
+var PERIOD = 300;
+$(function(){
+	var $ball = $('.ball');
+	var startTop = parseInt($ball.css('top'));
+	$('.ball').animate({
+		left: 1000
+	}, {
+		easing: 'linear',
+		duration: 5000,
+		step: function(now, tween){
+			this.style.top = parseInt(startTop - startTop * Math.sin((tween.now - tween.start) * 2 * Math.PI / PERIOD)) + 'px';
+		}
+	});
+});
+	</script>
+	<style type="text/css">
+.ball {
+	position: absolute;
+	top: 100px;
+	left: 5px;
+	width: 5px;
+	height: 5px;
+	background-color: red;
+	border-radius: 2.5px;
+}
+	</style>
+</head>
+<body>
+	<div class="ball">
+	</div>
+</body>
+</html>
