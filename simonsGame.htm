@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+        <script src="js/jquery-2.1.4.js">
+        </script>
+	<script>
+$(function(){
+	var seq = [], inSeq = [];
+	var lock = true;
+	var genSeq = function(){
+		var curLen = seq.length;
+		seq = [];
+		inSeq = [];
+		for (var i=0; i<=curLen; i++){
+			seq.push(parseInt(Math.random() * 4));
+		}
+		setTimeout(function(){displaySeq(0)}, 1000);
+	};
+	var displaySeq = function(step, off){
+		if (!off) {
+			if (step) {
+				$('#sectors > div').eq(seq[step-1]).css('opacity',1);
+			}
+				setTimeout(function() {
+					displaySeq(step, true);
+				}, 50);
+		} else {
+			if (seq.length != step) {
+				$('#sectors > div').eq(seq[step]).css('opacity',0.5);
+				setTimeout(function() {
+					displaySeq(++step);
+				}, 1000);
+			} else {
+				$('#sectors').css('cursor','pointer');
+				$('#sectors .state').html('?');
+				lock = false;
+			}
+		}
+	};
+
+	$('#sectors').click(function(e){
+		if (lock)
+			return;
+		var index = $(e.target).index();
+		if (index == 4) {
+			$('#sectors .state').html('😐');
+			return;
+		}
+		inSeq.push(index);
+		if (seq[inSeq.length-1] != inSeq[inSeq.length-1]) {
+			$('#sectors .state').html('😖');
+			lock = true;
+		}
+		if (seq.length == inSeq.length) {
+			$('#sectors').css('cursor','default');
+			$('#sectors .state').html('!');
+			lock = true;
+			var $score = $('#score > output');
+			$score.html(parseInt($score.html()) + seq.length);
+			genSeq();
+		}
+	});
+
+	genSeq();
+});
+	</script>
+	<style>
+#sectors {
+	margin: 5em auto;
+	width: 400px;
+	height: 400px;
+	border-radius: 200px;
+	font-size: 0;
+	overflow: hidden;
+	background-color: #000;
+	user-select: none;
+	-webkit-user-select: none;
+}
+
+#sectors > div {
+	width: 50%;
+	height: 50%;
+	display: inline-block;
+}
+
+#sectors > div:nth-child(1) {
+	background-color: red;
+}
+#sectors > div:nth-child(2) {
+	background-color: yellow;
+}
+#sectors > div:nth-child(3) {
+	background-color: green;
+}
+#sectors > div:nth-child(4) {
+	background-color: blue;
+}
+
+#sectors > .state {
+	position: relative;
+	width: 50px;
+	height: 50px;
+	line-height: 50px;
+	top: -225px;
+	left: 175px;
+	border-radius: 25px;
+	background-color: #fff;
+	font-size: 20pt;
+	text-align: center;
+}
+
+#score {
+	font-size: 32pt;
+}
+	</style>
+</head>
+<body>
+	<div id="sectors">
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div class="state">!
+		</div>
+	</div>
+	<div id="score">
+		Score:
+		<output>
+			0
+		</output>
+	</div>
+</body>
+</html>
